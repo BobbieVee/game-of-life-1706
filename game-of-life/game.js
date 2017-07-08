@@ -35,7 +35,15 @@ var gameOfLife = {
       and pass into func, the cell and the cell's x & y
       coordinates. For example: iteratorFunc(cell, x, y)
     */
+    for (var h=0; h<this.height; h++){
+      for (var w=0; w<this.width; w++) {  
+        var id = h+"-"+w
+        iteratorFunc(id)
+    }
+    } 
+  
   },
+  
   
   setupBoardEvents: function() {
     // each board cell has an CSS id in the format of: "x-y" 
@@ -69,6 +77,21 @@ var gameOfLife = {
     
     var cell00 = document.getElementById('0-0');
     cell00.addEventListener('click', onCellClick);
+
+    // function makeClickable(id){
+    //   // console.log(id)
+    //   cell = document.getElementById(id)
+    //   cell.addEventListener('click', onCellClick)
+    //   // console.log(cell.addEventListener('click', onCellClick))
+    // }
+
+    that.forEachCell(function(id){
+      var cell = document.getElementById(id)
+      cell.addEventListener('click', onCellClick)
+    })
+
+    //everycell.addEventListener('click', onCellClick);
+
   },
 
   step: function () {
@@ -89,4 +112,8 @@ var gameOfLife = {
   
 };
 
+var that = this.gameOfLife
+
+// console.log("this = ", this.gameOfLife.forEachCell)
 gameOfLife.createAndShowBoard();
+
