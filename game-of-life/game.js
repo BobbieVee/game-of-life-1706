@@ -74,9 +74,28 @@ var gameOfLife = {
       }
       
     };
-    
+
+    var clear = function(){
+      console.log('clear me!')
+      that.forEachCell(clearOne)
+    };
+
+    var clearOne = function(id){
+      var node = document.getElementById(id)
+      if (node.dataset.status == 'alive') {
+        node.className = 'dead';
+        node.dataset.status = 'dead';
+      }
+    }
+
+    //Listening: 
     var cell00 = document.getElementById('0-0');
     cell00.addEventListener('click', onCellClick);
+
+    var clearBtn = document.getElementById('clear_btn');
+    clearBtn.addEventListener('click', clear );
+
+
 
     // function makeClickable(id){
     //   // console.log(id)
