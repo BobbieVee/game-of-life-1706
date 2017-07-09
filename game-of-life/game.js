@@ -76,7 +76,6 @@ var gameOfLife = {
     };
 
     var clear = function(){
-      console.log('clear me!')
       that.forEachCell(clearOne)
     };
 
@@ -86,14 +85,33 @@ var gameOfLife = {
         node.className = 'dead';
         node.dataset.status = 'dead';
       }
-    }
+    };
 
-    //Listening: 
+    var random = function(){
+      that.forEachCell(randomize);
+    };
+
+    var randomize = function(id){
+      var node = document.getElementById(id);   
+      var num = Math.floor(Math.random() * 10);
+      if (num > 4){
+        node.className = 'alive';
+        node.dataset.status = 'alive';        
+      } else {
+        node.className = 'dead';
+        node.dataset.status = 'dead';         
+      }
+    };
+
+    //Listeners: 
     var cell00 = document.getElementById('0-0');
     cell00.addEventListener('click', onCellClick);
 
     var clearBtn = document.getElementById('clear_btn');
     clearBtn.addEventListener('click', clear );
+
+    var resetBtn = document.getElementById('reset_btn');
+    resetBtn.addEventListener('click', random );
 
 
 
