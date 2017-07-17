@@ -60,8 +60,9 @@ var gameOfLife = {
     // Here is how we would catch a click event on just the 0-0 cell
     // You need to add the click event on EVERY cell on the board
     
+     console.log(this)
     var onCellClick = function (e) {
-      
+      console.log(this)
       // QUESTION TO ASK YOURSELF: What is "this" equal to here?
       
       // how to set the style of the cell when it's clicked
@@ -112,7 +113,8 @@ var gameOfLife = {
 
     var resetBtn = document.getElementById('reset_btn');
     resetBtn.addEventListener('click', random );
-
+    console.log(this)
+    
 
 
     // function makeClickable(id){
